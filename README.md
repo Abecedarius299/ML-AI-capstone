@@ -2,6 +2,10 @@
 
 Capstone project of the Imperial College Professional Certificate in Machine Learning and AI. All 13 rounds are submitted. Only the final (round 13) submission is scored.
 
+## In short
+
+Imagine eight machines, each with a few unknown dials. Once a week I can set the dials of each machine and get back one number, and the goal is to make that number as high as possible. With only 13 tries per machine, every try has to count. I used a statistical model that estimates from the results so far where high values might be, and how unsure it is. Early tries were used to learn, later ones to improve on the best. All eight machines ended above their starting data, and the hardest one, almost zero everywhere, revealed its peak in week 10.
+
 ## Documentation
 
 - [Logbook](LOGBOOK.md): every query per function and round, with the method, the result and the reasoning
@@ -18,17 +22,15 @@ MODEL_CARD.md
 requirements.txt
 data/
   initial_data/function_1 ... function_8/   initial inputs and outputs provided by the course
-  queries.csv                               my queries and the returned results, per round
-notebooks/
-  optimiser.ipynb    refits the models and proposes the next query per function
-  analysis.ipynb     plots and evaluation of the data and the results
+optimisation_sorted.ipynb   refits the models and proposes the next query per function
+analysis.ipynb              plots, checks and benchmarking
 ```
 
-The **optimiser notebook** is the weekly loop: it loads the data, fits a Gaussian Process per function, generates the candidate points of the different acquisition functions and prints the query strings for the portal. The final cell picks the best observed point per function, which was the round 13 submission.
+The **optimisation notebook** ([optimisation_sorted.ipynb](optimisation_sorted.ipynb)) is the weekly loop: it loads the data, fits a Gaussian Process per function, generates the candidate points of the different acquisition functions (KG, EI, UCB and the geometric search) and prints the query strings for the portal. It also contains the Function 1 shape models. The final cell picks the best observed point per function, which was the round 13 submission.
 
-The **analysis notebook** looks at the data: plots of the queries and results per function, the Function 1 shape models and the comparison of the acquisition schedules on benchmark functions.
+The **analysis notebook** ([analysis.ipynb](analysis.ipynb)) looks at the data: it prints the readings per function, plots Function 1 (including an interpolation of the exponent of its readings), and contains the benchmarking, i.e. the comparison of KG and EI and of different acquisition schedules on standard test functions.
 
-Both notebooks read the same data files, so they always work on the same history. To run them, install the packages in `requirements.txt`. Note that the acquisition optimisation is partly random and no seeds were fixed, so a rerun can propose slightly different points than the ones submitted. The submitted points are in the logbook.
+Both notebooks load the initial data from `data/initial_data/` and add the weekly results in their data cell, one block per round. To run them, install the packages in `requirements.txt`. Note that the acquisition optimisation is partly random and no seeds were fixed, so a rerun can propose slightly different points than the ones submitted. The submitted points are in the logbook.
 
 ## Project overview
 
@@ -60,16 +62,16 @@ As only the final submission is scored, rounds 11 and 12 were used to gather inf
 
 ## Results
 
-| Function | Dimensions | Best found | Round |
-|---|---|---|---|
-| 1 | 2 | 1.4497 | 10 |
-| 2 | 2 | 0.6128 | 4 |
-| 3 | 3 | -0.0010 | 6 |
-| 4 | 4 | 0.5518 | 5 |
-| 5 | 4 | 8662.41 | 6 |
-| 6 | 5 | -0.1771 | 4 |
-| 7 | 6 | 3.3224 | 4 |
-| 8 | 8 | 9.9896 | 9 |
+| Function | Dimensions | Best initial | Best found | Round |
+|---|---|---|---|---|
+| 1 | 2 | 7.7e-16 | 1.4497 | 10 |
+| 2 | 2 | 0.6112 | 0.6128 | 4 |
+| 3 | 3 | -0.0348 | -0.0010 | 6 |
+| 4 | 4 | -4.0255 | 0.5518 | 5 |
+| 5 | 4 | 1088.86 | 8662.41 | 6 |
+| 6 | 5 | -0.7143 | -0.1771 | 4 |
+| 7 | 6 | 1.3650 | 3.3224 | 4 |
+| 8 | 8 | 9.5985 | 9.9896 | 9 |
 
 These are the best points found in the explored regions, not proven global maxima. Function 2 is noisy, so its resubmitted point may return a different value.
 
