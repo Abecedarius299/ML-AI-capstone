@@ -36,7 +36,7 @@ Final best: 1.4497 (round 10).
 | 8 | `0.678164-0.999999` | KG | 0.4515 | Information gathering per the schedule. |
 | 9 | `0.941419-0.999999` | EI | -0.0477 | EI proposed the x2 = 1 edge; a rerun gave the same point, so it was kept as the model's genuine belief. Poor value: the edge does not work. |
 | 10 | `0.243426-0.273512` | KG | -0.1520 | Information gathering in the unexplored lower-left area. Poor value. |
-| 12 | `0.690480-0.179175` | TBC | 0.5551 | Last information round before the final submission. Good value far from the best point in x2, similar to round 1 (x2 near 0): the good region seems to be a band around x1 = 0.7 rather than a single peak. |
+| 12 | `0.690480-0.179175` | EI | 0.5551 | Last information round before the final submission. Good value far from the best point in x2, similar to round 1 (x2 near 0): the good region seems to be a band around x1 = 0.7 rather than a single peak. |
 | 13 | `0.705807-0.548955` | Best observed | pending | Final, scored submission: the round 4 point was resubmitted. As the function is noisy, the returned value may differ from 0.6128. |
 
 Final best: 0.6128 (round 4).
@@ -55,7 +55,7 @@ Final best: 0.6128 (round 4).
 | 8 | `0.470739-0.611138-0.458942` | KG | -0.0098 | Information gathering in a different region per the schedule. |
 | 9 | `0.999999-0.607276-0.498188` | EI | -0.0054 | Exploitation close to the best region with x1 at its upper bound. Close to the best, not better. |
 | 10 | `0.999999-0.259149-0.487006` | KG | -0.0316 | Information gathering with x1 at its upper bound and a new x2 range. Below the best. |
-| 12 | `0.999999-0.999999-0.005260` | TBC | -0.1367 | Last information round before the final submission, in the unexplored corner with x1 and x2 at their upper bound and x3 near 0. Poor value. |
+| 12 | `0.999999-0.999999-0.005260` | EI | -0.1367 | Last information round before the final submission, in the unexplored corner with x1 and x2 at their upper bound and x3 near 0. Poor value. |
 | 13 | `0.999999-0.604294-0.475172` | Best observed | pending | Final, scored submission: the round 6 point was resubmitted. |
 
 Final best: -0.0010 (round 6).
@@ -74,7 +74,7 @@ Final best: -0.0010 (round 6).
 | 8 | `0.417285-0.381917-0.404133-0.432563` | EI | 0.4691 | Refinement on the peak. If this does not improve, the function is treated as converged. |
 | 9 | `0.481045-0.221240-0.380898-0.507482` | KG | -4.6102 | Two declines in a row on the peak, so the function is treated as converged; the best point is resubmitted in the final rounds. KG probe away from the peak, poor value. |
 | 10 | `0.463321-0.611678-0.432794-0.389708` | KG | -4.2323 | Information gathering away from the converged peak. Poor value, confirming the peak region. |
-| 12 | `0.403305-0.393584-0.408291-0.405387` | TBC | 0.3721 | Last round before the final submission, 0.03 from the best point. Below the best, again showing how narrow the peak is. |
+| 12 | `0.403305-0.393584-0.408291-0.405387` | EI | 0.3721 | Last round before the final submission, 0.03 from the best point. Below the best, again showing how narrow the peak is. |
 | 13 | `0.418584-0.379256-0.406197-0.429294` | Best observed | pending | Final, scored submission: the round 5 point was resubmitted. |
 
 Final best: 0.5518 (round 5).
@@ -93,7 +93,7 @@ Final best: 0.5518 (round 5).
 | 8 | `0.702161-0.794975-0.837151-0.999999` | KG | 1959.65 | Further exploration; the corner value is kept and resubmitted in the final rounds. |
 | 9 | `0.999826-0.288876-0.779519-0.519313` | KG | 673.17 | Further exploration away from the corner; low value again, the corner stands. |
 | 10 | `0.000000-0.416798-0.999999-0.999999` | KG | 1687.17 | Exploration of a new edge. Below the corner value. |
-| 12 | `0.999999-0.999999-0.999999-0.274356` | TBC | 4464.23 | Last information round before the final submission, with x4 moved away from its upper bound. About half the corner value. |
+| 12 | `0.999999-0.999999-0.999999-0.274356` | EI | 4464.23 | Last information round before the final submission, with x4 moved away from its upper bound. About half the corner value. |
 | 13 | `0.999999-0.999999-0.999999-0.999999` | Best observed | pending | Final, scored submission: the corner from round 6 was resubmitted. |
 
 Final best: 8662.41 (round 6).
@@ -112,7 +112,7 @@ Final best: 8662.41 (round 6).
 | 8 | `0.411919-0.486790-0.783364-0.940220-0.000000` | KG | -0.5412 | EI was below the best three rounds in a row, so the function was switched to KG for information gathering. EI returns for the final rounds. |
 | 9 | `0.423026-0.628770-0.480473-0.543956-0.000000` | KG | -0.7274 | Information gathering per the plan; EI returns for the final rounds. |
 | 10 | `0.550085-0.482510-0.999999-0.659340-0.203450` | KG | -0.7973 | Information gathering in a new region (not at x5 = 0). Below the best. |
-| 12 | `0.314378-0.464949-0.507565-0.983826-0.226501` | TBC | -0.6400 | Last information round before the final submission. Below the best. |
+| 12 | `0.314378-0.464949-0.507565-0.983826-0.226501` | EI | -0.6400 | Last information round before the final submission. Below the best. |
 | 13 | `0.469319-0.386405-0.637791-0.692818-0.155377` | Best observed | pending | Final, scored submission: the round 4 point was resubmitted. No later round improved on it. |
 
 Final best: -0.1771 (round 4).
@@ -131,7 +131,7 @@ Final best: -0.1771 (round 4).
 | 8 | `0.337764-0.665798-0.542523-0.305453-0.325184-0.665266` | KG | 1.2157 | Information gathering; the best point is resubmitted in the final rounds. |
 | 9 | `0.046445-0.135532-0.386253-0.249827-0.283312-0.602237` | KG | 2.8306 | Information gathering. |
 | 10 | `0.199817-0.000000-0.000000-0.263228-0.367935-0.645113` | KG | 2.0837 | Information gathering far from the best point. |
-| 12 | `0.259532-0.201152-0.448851-0.294944-0.332911-0.604932` | TBC | 3.1426 | Last round before the final submission, 0.10 from the best point. Second highest of my queries, below the best. |
+| 12 | `0.259532-0.201152-0.448851-0.294944-0.332911-0.604932` | EI | 3.1426 | Last round before the final submission, 0.10 from the best point. Second highest of my queries, below the best. |
 | 13 | `0.201690-0.150011-0.476874-0.275332-0.311652-0.657300` | Best observed | pending | Final, scored submission: the round 4 point was resubmitted. |
 
 Final best: 3.3224 (round 4).
@@ -150,7 +150,7 @@ Final best: 3.3224 (round 4).
 | 8 | `0.000000-0.302408-0.133092-0.124992-0.681179-0.481294-0.061693-0.000000` | KG | 9.8745 | Information gathering far from existing points. |
 | 9 | `0.129074-0.186300-0.147630-0.185138-0.783370-0.494732-0.229729-0.780314` | EI | **9.9896** | Exploitation round per the schedule. New best. |
 | 10 | `0.017936-0.329951-0.149455-0.000000-0.999999-0.660958-0.037136-0.999999` | KG | 9.8156 | Information gathering away from the new best. |
-| 12 | `0.120704-0.186952-0.152578-0.175095-0.802231-0.495161-0.221075-0.999999` | TBC | 9.9787 | Last round before the final submission, close to the best point except x8 at its upper bound. Second highest of my queries, below the best. |
+| 12 | `0.120704-0.186952-0.152578-0.175095-0.802231-0.495161-0.221075-0.999999` | EI | 9.9787 | Last round before the final submission, close to the best point except x8 at its upper bound. Second highest of my queries, below the best. |
 | 13 | `0.129074-0.186300-0.147630-0.185138-0.783370-0.494732-0.229729-0.780314` | Best observed | pending | Final, scored submission: the round 9 point was resubmitted. |
 
 Final best: 9.9896 (round 9).
