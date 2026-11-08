@@ -30,7 +30,8 @@ This datasheet covers all eight functions. Where the answers differ per function
 2. **How the data set evolves.** Each round adds one point per function, so after 13 rounds each function has 13 more points. The weekly queries and results are added in the data cell of both notebooks (one block per round) and listed in the [logbook](LOGBOOK.md). The sampling is adaptive, not random:
    - Rounds 1 to 4: exploration while comparing acquisition functions, including probes at the borders.
    - Rounds 5 to 10: alternating between information-seeking (KG) and exploiting (EI) rounds, adapted per function.
-   - Rounds 11 and 12: information gathering, as only the final round is scored.
+   - Round 11: information gathering (KG), as only the final round is scored.
+   - Round 12: a last exploitation test (EI) on all functions.
    - Round 13: the best observed point of each function was resubmitted.
 
    The queries therefore concentrate around the best points found, and large parts of the input space are only covered by the initial points. This gets worse with higher dimensions: in the 6D and 8D functions a few dozen points barely cover the space. The data set is a record of the search, not a representative sample of the functions.
@@ -57,7 +58,7 @@ This datasheet covers all eight functions. Where the answers differ per function
    - Functions 4 and 5: a single clear peak or trend, therefore EI once it was visible.
    - Functions 6, 7 and 8: higher dimensions and sparse data, therefore mostly KG to learn more about the landscape.
 
-3. **Exploration and exploitation.** KG for information, EI for exploitation, UCB as a comparison. The schedule (alternating KG and EI rounds) was chosen by simulating the remaining rounds on standard test functions with five repeated runs per schedule. On top of that, the choice was adapted per function, and in the end by the scoring rule: as only round 13 counts, rounds 11 and 12 could be spent on information.
+3. **Exploration and exploitation.** KG for information, EI for exploitation, UCB as a comparison. The schedule (alternating KG and EI rounds) was chosen by simulating the remaining rounds on standard test functions with five repeated runs per schedule. On top of that, the choice was adapted per function, and in the end by the scoring rule: as only round 13 counts, rounds 11 and 12 could be spent on information and tests without risk.
 
 4. **Changes over the weeks.**
    - Reruns gave different points, so I increased restarts and raw samples per function until they were stable.
