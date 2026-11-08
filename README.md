@@ -1,12 +1,16 @@
-Black-Box Optimisation Capstone
+# Black-Box Optimisation Capstone
 
 Capstone project of the Imperial College Professional Certificate in Machine Learning and AI. All 13 rounds are submitted. Only the final (round 13) submission is scored.
 
-Documentation
-Logbook: every query per function and round, with the method, the result and the reasoning
-Datasheet: the query history and function evaluations
-Model card: the optimisation approach
-Repository structure
+## Documentation
+
+- [Logbook](LOGBOOK.md): every query per function and round, with the method, the result and the reasoning
+- [Datasheet](DATASHEET.md): the query history and function evaluations
+- [Model card](MODEL_CARD.md): the optimisation approach
+
+## Repository structure
+
+```
 README.md
 LOGBOOK.md
 DATASHEET.md
@@ -18,32 +22,33 @@ data/
 notebooks/
   optimiser.ipynb    refits the models and proposes the next query per function
   analysis.ipynb     plots and evaluation of the data and the results
+```
 
-The optimiser notebook is the weekly loop: it loads the data, fits a Gaussian Process per function, generates the candidate points of the different acquisition functions and prints the query strings for the portal. The final cell picks the best observed point per function, which was the round 13 submission.
+The **optimiser notebook** is the weekly loop: it loads the data, fits a Gaussian Process per function, generates the candidate points of the different acquisition functions and prints the query strings for the portal. The final cell picks the best observed point per function, which was the round 13 submission.
 
-The analysis notebook looks at the data: plots of the queries and results per function, the Function 1 shape models and the comparison of the acquisition schedules on benchmark functions.
+The **analysis notebook** looks at the data: plots of the queries and results per function, the Function 1 shape models and the comparison of the acquisition schedules on benchmark functions.
 
-Both notebooks read the same data files, so they always work on the same history. To run them, install the packages in requirements.txt. Note that the acquisition optimisation is partly random and no seeds were fixed, so a rerun can propose slightly different points than the ones submitted. The submitted points are in the logbook.
+Both notebooks read the same data files, so they always work on the same history. To run them, install the packages in `requirements.txt`. Note that the acquisition optimisation is partly random and no seeds were fixed, so a rerun can propose slightly different points than the ones submitted. The submitted points are in the logbook.
 
-Project overview
+## Project overview
 
 Eight unknown functions, 2D to 8D. One query per function per week, 13 in total. Goal: find the maximum. No formulas, no gradients, no retries: every query has to be worth a week.
 
 This is what real optimisation usually looks like: tuning a model that takes days to train, running an experiment that costs actual money, testing a recipe you can only bake once. The skill being trained is not "run more experiments" but "decide what is worth measuring next", and defending that decision before knowing how it turns out. That is the transferable part: surrogate modelling, reasoning under uncertainty, and making expensive decisions with sparse data.
 
-Inputs and outputs
+## Inputs and outputs
 
-Inputs are vectors in the unit cube, dimensionality 2 to 8 depending on the function. Each function starts with an initial data set (initial_inputs.npy, initial_outputs.npy, between 10 and 40 points) that grows by one observation per week.
+Inputs are vectors in the unit cube, dimensionality 2 to 8 depending on the function. Each function starts with an initial data set (`initial_inputs.npy`, `initial_outputs.npy`, between 10 and 40 points) that grows by one observation per week.
 
 The output is a single scalar per query: no gradient, no noise estimate, no diagnostics. Scales vary wildly between functions, from values clustered near zero to four-digit outputs.
 
-Submissions are hyphen-separated coordinates with six decimals: 0.123456-0.654321.
+Submissions are hyphen-separated coordinates with six decimals: `0.123456-0.654321`.
 
-Challenge objectives
+## Challenge objectives
 
 The objective is to maximise all eight functions within the given query budget. The main constraints are the limit of 13 queries per function, a response delay of one week per query, the strictly sequential nature of the process, and the unknown structure of the functions. The functions differ considerably in character. Some are smooth and unimodal, some are noisy, some are high-dimensional with sparse data coverage, and one is almost entirely flat with the signal confined to a small region. A uniform strategy across all functions would waste queries. An important part of the challenge is therefore to assess, per function and per week, what kind of problem is actually being solved, and to allocate the queries accordingly.
 
-Technical approach
+## Technical approach
 
 Bayesian optimisation, built on Ax and BoTorch. A Gaussian Process surrogate per function, refit from scratch on the full history every week. On top of that, several acquisition functions run side by side each round, from information-seeking to greedy, and their proposals are compared before anything is submitted.
 
@@ -53,19 +58,21 @@ For the mostly flat function (Function 1), standard BO has nothing to work with:
 
 As only the final submission is scored, rounds 11 and 12 were used to gather information, and round 13 resubmitted the best observed point of each function.
 
-Results
-Function	Dimensions	Best found	Round
-1	2	1.4497	10
-2	2	0.6128	4
-3	3	-0.0010	6
-4	4	0.5518	5
-5	4	8662.41	6
-6	5	-0.1771	4
-7	6	3.3224	4
-8	8	9.9896	9
+## Results
+
+| Function | Dimensions | Best found | Round |
+|---|---|---|---|
+| 1 | 2 | 1.4497 | 10 |
+| 2 | 2 | 0.6128 | 4 |
+| 3 | 3 | -0.0010 | 6 |
+| 4 | 4 | 0.5518 | 5 |
+| 5 | 4 | 8662.41 | 6 |
+| 6 | 5 | -0.1771 | 4 |
+| 7 | 6 | 3.3224 | 4 |
+| 8 | 8 | 9.9896 | 9 |
 
 These are the best points found in the explored regions, not proven global maxima. Function 2 is noisy, so its resubmitted point may return a different value.
 
-Decisions
+## Decisions
 
-The decisions and their reasons are in the logbook, one table per function. The short version is also in the weekly discussion posts. My private working journal is not in this repo.
+The decisions and their reasons are in the [logbook](LOGBOOK.md), one table per function. The short version is also in the weekly discussion posts. My private working journal is not in this repo.
