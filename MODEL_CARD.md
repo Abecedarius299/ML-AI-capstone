@@ -21,7 +21,7 @@ The approach changed over the rounds. In the first rounds mostly KG and UCB were
 
 Function 1 needed a different approach, since it returns practically zero almost everywhere and the GP has nothing to model there. It started with the geometric search. Then I noticed that the exponent of the tiny readings (e.g. 1e-58, 1e-12, 1e-10) shrinks steadily towards one region. I therefore fitted simple shape models on the exponents instead of the values: a Gaussian blob in rounds 8 and 9, and in round 10 a triangulation of the peak from the three highest readings. Round 10 returned 1.45 after nine rounds close to zero. Rounds 11 and 12 tested a Gaussian fit and plain EI around it, both returned less.
 
-Only the final submission is scored. Rounds 11 and 12 were therefore used to gather information, and in round 13 the best observed point of each function was resubmitted.
+Only the final submission is scored. Round 11 was therefore used to gather information (KG), round 12 was a last exploitation test (EI) that could not lower the score, and in round 13 the best observed point of each function was resubmitted.
 
 ### Intended use
 
