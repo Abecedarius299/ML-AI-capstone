@@ -30,7 +30,7 @@ Which proposal wins is a per-function decision, not a global policy, and it shif
 
 For the mostly flat function (Function 1), standard BO has nothing to work with: the surrogate is blind on a zero landscape. It therefore started with the geometric search. Once the tiny readings showed a trend in their exponent, I fitted simple shape models on the exponents and triangulated the peak, which returned 1.45 in round 10 after nine rounds of values close to zero.
 
-As only the final submission is scored, rounds 11 and 12 were used to gather information, and round 13 resubmitted the best observed point of each function.
+As only the final submission is scored, round 11 was used to gather information (KG), round 12 was a last exploitation test (EI), and round 13 resubmitted the best observed point of each function.
 
 ### Code
 
