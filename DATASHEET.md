@@ -17,7 +17,7 @@ This datasheet covers all eight functions. Where the answers differ per function
 | 1 | Detecting contamination sources (e.g. radiation) in an area | 2D | 10 | Signal strength, practically zero away from a source |
 | 2 | A black-box machine learning model | 2D | 10 | Noisy log-likelihood |
 | 3 | Drug discovery, a mix of three compounds | 3D | 15 | Adverse reactions, negated so that higher is better |
-| 4 | Placing products across warehouses, approximated by a model | 4D | 30 | Score of the placement |
+| 4 | Placing products across warehouses, approximated by an ML model with four hyperparameters | 4D | 30 | Difference from an expensive baseline calculation |
 | 5 | Chemical process | 4D | 20 | Yield |
 | 6 | Cake recipe with five ingredients | 5D | 20 | Combined score of flavour, consistency, calories, waste and cost (negative, higher is better) |
 | 7 | Tuning six hyperparameters of a machine learning model | 6D | 30 | Performance score of the model |
@@ -104,7 +104,7 @@ This datasheet covers all eight functions. Where the answers differ per function
 |---|---|---|---|
 | 1 | 1.4497 | `0.639566-0.625206` | Medium. The peak was found from a smooth trend, but it is narrow: 0.015 away the value drops to a third, so the true top may be a bit higher. |
 | 2 | 0.6128 | `0.705807-0.548955` | Low. Noisy, and only marginally above the initial best (0.6112). |
-| 3 | -0.0010 | `0.999999-0.604294-0.475172` | High. Very close to zero, which is likely the upper limit for negated adverse reactions. |
+| 3 | -0.0010 | `0.999999-0.604294-0.475172` | High. Very close to zero, which is the upper limit, as the output is the negative of the number of adverse reactions. |
 | 4 | 0.5518 | `0.418584-0.379256-0.406197-0.429294` | Medium to high. All refinements around it returned lower, all probes elsewhere far lower. |
 | 5 | 8662.41 | `0.999999-0.999999-0.999999-0.999999` | High within the allowed inputs: the values rise steadily towards this corner, which cannot be exceeded. |
 | 6 | -0.1771 | `0.469319-0.386405-0.637791-0.692818-0.155377` | Low. No improvement after round 4, and the landscape is not understood. |
